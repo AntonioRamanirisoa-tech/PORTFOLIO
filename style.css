@@ -1,0 +1,925 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to right, whitesmoke, wheat);
+  background-size: cover;
+  color: #000;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+hr {
+  color: orange;
+}
+
+/* ===== Navigation ===== */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: clamp(16px, 2.5vw, 30pt);
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: orange;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 20px;
+  padding: 10px 20px;
+  z-index: 999;
+}
+
+nav div.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: bold;
+}
+
+nav div.logo .badge {
+  background: brown;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+nav div.menu ul {
+  display: flex;
+  list-style: none;
+  gap: clamp(16px, 4vw, 70px);
+  font-size: clamp(14px, 1.5vw, 20pt);
+  align-items: center;
+}
+
+nav .menu ul a {
+  color: brown;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+nav .menu ul li a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  background-color: rgb(126, 12, 57);
+  width: 0;
+  height: 0;
+  border-radius: 3px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav .menu ul li a:hover {
+  color: rgb(242, 242, 242);
+}
+
+nav .menu ul li a:hover::after {
+  width: 100%;
+  left: 0;
+  height: 3px;
+}
+
+li#style_contact {
+  padding: 8px 16px;
+  border-radius: 15px;
+  background: black;
+}
+
+li#style_contact a {
+  color: white;
+}
+
+/* Hamburger menu */
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: brown;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* ===== Présentation ===== */
+div.presentation {
+  display: flex;
+  margin: 50px auto;
+  justify-content: space-around;
+  align-items: center;
+  padding: 180px 20px 100px;
+  gap: 40px;
+}
+
+div.nom {
+  width: 50%;
+}
+
+div.nom h1 {
+  font-size: clamp(22px, 3.5vw, 35pt);
+  color: rgb(126, 12, 57);
+  animation: slideH1 3s ease;
+}
+
+@keyframes slideH1 {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+div.nom p {
+  font-size: clamp(13px, 1.5vw, 15pt);
+  text-align: justify;
+  animation: slideP 1.5s ease forwards;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+@keyframes slideP {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+div.nom .CV {
+  width: fit-content;
+  border: 3px solid orange;
+  border-radius: 20px;
+  padding: 12px 28px;
+  margin-top: 24px;
+  text-align: center;
+  background-color: bisque;
+  transition: background 0.3s ease;
+}
+
+div.nom .CV:hover {
+  background-color: #f5d5a0;
+}
+
+div.nom .CV a {
+  font-style: italic;
+  font-size: clamp(14px, 1.5vw, 15pt);
+  color: brown;
+  text-decoration: none;
+}
+
+div.presentation img {
+  max-width: 100%;
+  height: auto;
+  width: clamp(200px, 30vw, 500px);
+  aspect-ratio: 1 / 1;
+  border: 1px solid orange;
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 0 rgb(209, 174, 0);
+  object-fit: cover;
+}
+
+div.nom2 {
+  font-size: clamp(14px, 1.8vw, 20pt);
+  text-align: left;
+  margin-top: 16px;
+}
+
+div.nom2 ul {
+  list-style: none;
+}
+
+div.nom2 strong {
+  color: #ffb400;
+}
+
+/* ===== Projets ===== */
+section.projet {
+  padding: 100px 0 150px;
+}
+
+section.projet h1 {
+  color: orange;
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40pt);
+  text-decoration: underline;
+}
+
+section.projet h3 {
+  text-align: center;
+  font-size: clamp(14px, 1.5vw, 15pt);
+  margin-bottom: 40px;
+  padding: 0 16px;
+}
+
+div.projet_container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+div.projet_container div.card_projet {
+  width: min(400px, 90%);
+  border: 1px solid orange;
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+}
+
+div.projet_container p {
+  padding: 12px 16px;
+  margin: 0;
+}
+
+div.projet_container img {
+  width: 100%;
+  display: block;
+}
+
+div.projet_container div.button {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ===== Compétences ===== */
+section.Competences {
+  padding-top: 100px;
+}
+
+div.flA {
+  width: min(90%, 1000px);
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+div.flA > p {
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 25pt);
+  text-align: left;
+  color: rgb(102, 84, 12);
+  margin-bottom: 12px;
+}
+
+section.Competences h1 {
+  border-radius: 30px;
+  padding-bottom: 10px;
+  color: orange;
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40pt);
+  text-decoration: underline;
+}
+
+div.flA1,
+div.flA2 {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  width: 100%;
+  background-color: white;
+  padding: 8px 16px;
+  gap: 16px;
+}
+
+div.flA1 img,
+div.flA2 img {
+  width: clamp(60px, 8vw, 100px);
+  height: clamp(60px, 8vw, 100px);
+  object-fit: contain;
+  border-radius: 20px 0 0 20px;
+}
+
+.skill-bar-wrapper {
+  flex: 1;
+  text-align: left;
+}
+
+.skill-bar-wrapper h2 {
+  font-size: clamp(16px, 2vw, 22px);
+  margin-bottom: 6px;
+}
+
+div.range {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+div.range .range-style {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ffb400, #e69500);
+  border-radius: 6px;
+}
+
+div.range2 {
+  width: 100%;
+  height: 12px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+div.range2 .range-style {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ffb400, #e69500);
+  border-radius: 6px;
+}
+
+div.flA3 {
+  padding: 16px;
+  font-size: clamp(14px, 1.5vw, 15pt);
+  text-align: left;
+  border-radius: 0 0 30px 30px;
+  background-color: white;
+}
+
+div.flA3 ul {
+  list-style: disc;
+  padding-left: 24px;
+}
+
+div.flA3 p {
+  font-style: italic;
+  color: rgb(102, 84, 12);
+  text-align: start;
+  font-size: clamp(14px, 1.5vw, 15pt);
+  display: inline;
+}
+
+div.flA4 {
+  border: 1px solid orange;
+  border-radius: 20px;
+  margin-top: 50px;
+  background-color: white;
+  padding: 16px;
+}
+
+div.flA4 h2 {
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 25pt);
+  text-decoration: underline;
+  color: rgb(0, 179, 255);
+  margin-bottom: 16px;
+}
+
+div.flA4 > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  flex-wrap: wrap;
+}
+
+div.flA4 h3 {
+  font-size: clamp(15px, 1.8vw, 18pt);
+  white-space: nowrap;
+}
+
+div.flA4 p {
+  font-style: italic;
+  font-size: clamp(13px, 1.5vw, 15pt);
+}
+
+/* ===== Parcours ===== */
+main.Parcours {
+  padding-top: 170px;
+  width: min(90%, 1000px);
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+main.Parcours fieldset {
+  border-radius: 20px;
+  border-color: orange;
+  padding: 20px;
+}
+
+main.Parcours legend {
+  color: orange;
+  font-size: clamp(28px, 4vw, 40pt);
+  text-decoration: underline;
+  padding: 0 12px;
+}
+
+main.Parcours div.pA {
+  margin-bottom: 60px;
+  display: flex;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+main.Parcours div.pA1 {
+  border-radius: 30px;
+  text-align: left;
+  padding: 20px;
+  background-color: white;
+  flex: 1;
+}
+
+main.Parcours div.pA1 h2,
+main.Parcours div.pA2 h2 {
+  font-size: clamp(18px, 2vw, 24px);
+  margin-bottom: 8px;
+}
+
+main.Parcours div.pA2 {
+  border-radius: 30px;
+  text-align: left;
+  padding: 20px;
+  background-color: white;
+  flex: 1;
+}
+
+main.Parcours div.pA2 ul {
+  list-style: none;
+  padding: 0;
+}
+
+main.Parcours div.pA2 li {
+  padding: 4px 0;
+}
+
+main.Parcours div.pA3 {
+  border: 1px solid orange;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 0 auto 50px;
+  max-width: 600px;
+  background-color: white;
+}
+
+main.Parcours div.pA3 ul {
+  list-style: disc;
+  padding-left: 20px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+/* ===== Footer / Contact ===== */
+footer {
+  font-size: clamp(14px, 1.5vw, 15pt);
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+div.bas_page {
+  padding-top: 100px;
+  width: min(90%, 1100px);
+  margin: 0 auto;
+}
+
+div.bas_page h1 {
+  color: #030303;
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40pt);
+  text-decoration: underline;
+}
+
+div.bp {
+  display: flex;
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 24px auto;
+  background-color: white;
+  gap: 24px;
+}
+
+div.bp1 {
+  flex: 1;
+}
+
+div.bp1 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 8px;
+}
+
+div.bp1 i {
+  width: clamp(40px, 5vw, 60px);
+  height: clamp(40px, 5vw, 60px);
+  font-size: clamp(28px, 4vw, 60pt);
+  text-align: center;
+  color: orange;
+  transition: color 0.3s ease;
+}
+
+div.bp1 i:hover {
+  color: brown;
+}
+
+form.bp2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form.bp2 h3 {
+  font-size: clamp(18px, 2.5vw, 30pt);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+form.bp2 div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+form.bp2 input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 10px 0 0;
+  outline: none;
+  background-color: white;
+  font-size: 14px;
+}
+
+form.bp2 input:focus {
+  border-color: orange;
+}
+
+form.bp2 .btn_action {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+form.bp2 .btn_action a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  padding: 10px 24px;
+  width: max-content;
+  background: orange;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: clamp(14px, 1.5vw, 15pt);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: brown;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-right: none;
+  border-radius: 0 20px 0 0;
+  background-color: white;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+}
+
+textarea:focus {
+  border-color: orange;
+  outline: none;
+}
+
+/* ===== Localisation ===== */
+div.Localisation {
+  width: 100%;
+  margin: 60px auto 40px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+div.Localisation h2 {
+  text-decoration: underline;
+  font-size: clamp(18px, 2.5vw, 29pt);
+  color: orange;
+}
+
+div.Localisation img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+div.Loca001 {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+div.L1,
+div.L2 {
+  flex: 1;
+  min-width: 200px;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+div.L1 i,
+div.L2 i {
+  font-size: clamp(30px, 4vw, 50pt);
+  color: orange;
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+div.L3 {
+  border-radius: 20px;
+  padding: 24px;
+  background-color: white;
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+div.L3 > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== Responsive : tablettes ===== */
+@media (max-width: 1024px) {
+  nav {
+    width: 95%;
+    padding: 10px 16px;
+  }
+
+  nav div.menu ul {
+    gap: 24px;
+  }
+
+  div.presentation {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 160px 16px 60px;
+    margin: 0;
+  }
+
+  div.nom {
+    width: 100%;
+  }
+
+  div.nom h1 {
+    text-align: center;
+  }
+
+  div.nom p {
+    text-align: center;
+  }
+
+  div.nom .CV {
+    margin: 24px auto 0;
+  }
+
+  div.nom2 ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  div.projet_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main.Parcours div.pA {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  div.bp {
+    flex-direction: column;
+  }
+
+  form.bp2 input {
+    width: 100%;
+  }
+}
+
+/* ===== Responsive mobile < 768px ===== */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    width: 95%;
+    top: 8px;
+    padding: 10px 14px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  nav div.menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: orange;
+    border-radius: 0 0 20px 20px;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .menu-toggle:checked ~ .menu {
+    max-height: 400px;
+    padding: 16px 0;
+  }
+
+  nav div.menu ul {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav div.menu ul a {
+    display: block;
+    padding: 8px;
+  }
+
+  li#style_contact {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  /* Hamburger animation */
+  .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  div.presentation {
+    padding: 140px 12px 40px;
+    gap: 24px;
+  }
+
+  div.nom h1 {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  div.nom p {
+    font-size: clamp(13px, 3.5vw, 15px);
+  }
+
+  section.projet h1 {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  section.Competences h1 {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  div.flA1,
+  div.flA2 {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .skill-bar-wrapper {
+    text-align: center;
+    width: 100%;
+  }
+
+  div.flA4 > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  div.flA4 h3 {
+    white-space: normal;
+  }
+
+  main.Parcours legend {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  main.Parcours {
+    padding-top: 80px;
+  }
+
+  div.bas_page h1 {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  div.bp {
+    padding: 16px;
+    flex-direction: column;
+  }
+
+  div.bp1 ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  div.bp1 i {
+    font-size: clamp(28px, 8vw, 40px);
+    padding: 8px;
+  }
+
+  div.Loca001 {
+    flex-direction: column;
+  }
+
+  div.L3 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  div.L3 img {
+    width: 100%;
+  }
+}
+
+/* ===== Très petits écrans < 400px ===== */
+@media (max-width: 400px) {
+  nav {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  div.presentation {
+    padding: 130px 8px 24px;
+  }
+
+  div.presentation img {
+    width: 180px;
+  }
+
+  div.nom .CV {
+    padding: 10px 18px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  form.bp2 .btn_action {
+    flex-direction: column;
+  }
+
+  form.bp2 h3 {
+    font-size: 16px;
+  }
+}
